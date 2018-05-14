@@ -3,6 +3,7 @@
 
 const os = require("os");
 const chalk = require("chalk");
+const babel = require('babel-register');
 
 class UI {
   constructor() { }

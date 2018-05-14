@@ -3,6 +3,7 @@
 
 const path = require('path');
 const ui = new (require(path.resolve(__dirname, "./ui.js")));
+const babel = require('babel-register');
 
 class packet {
   constructor() { }
