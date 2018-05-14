@@ -1,0 +1,24 @@
+{
+  "name": "gdax-bot",
+  "version": "1.0.0",
+  "description": "GDAX trading monitor",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "gdax",
+    "crypto",
+    "currency",
+    "trader"
+  ],
+  "author": "isonyx",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "commander": "^2.15.1",
+    "npm": "^6.0.1",
+    "path": "^0.12.7",
+    "yargs": "^11.0.0"
+  }
+}
