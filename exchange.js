@@ -5,7 +5,7 @@ const Gdax = require('gdax');
 const path = require('path');
 const ui = new (require(path.resolve(__dirname, "./ui.js")));
 const packet = new (require(path.resolve(__dirname, "./packet.js")));
-const babel = require('babel-register');
+const babel = require('babel/register');
 
 class exchange {
   constructor(product) {
