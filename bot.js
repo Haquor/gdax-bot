@@ -3,7 +3,7 @@
 
 const path = require('path');
 const modes = require(path.resolve( __dirname, "./modes.js" ));
-const babel = require('babel/register');
+const babel = require('babel-register');
 
 const args = require('yargs')
     .usage('Usage: $0 option message \n e.g $0 -c config_file')
