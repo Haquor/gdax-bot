@@ -7,7 +7,7 @@ It is currently being used for research and market analysis, but in time, we hop
 
   - Support multiple Exchanges (e.g. Polinex, Kraken, Bitfinex, Binance)
   - Run custom TA strategies
-  - Peform magic!
+  - Perform magic!
 
 ### Project Contributors
 
@@ -23,7 +23,7 @@ And of course gdax-bot itself is open source with a [public repository](https://
 
 gdax-bot requires [Node.js](https://nodejs.org/) to run.
 
-Install the dependencies and devDependencies and start the server.
+Install the dependencies and start the bot.
 
 ```sh
 $ cd gdax-bot
