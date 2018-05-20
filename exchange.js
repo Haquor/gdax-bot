@@ -7,8 +7,8 @@ const ui = new (require(path.resolve(__dirname, "./ui.js")));
 const packet = new (require(path.resolve(__dirname, "./packet.js")));
 const babel = require('babel-register');
 
-class exchange {
-  constructor(product) {
+class Exchange {
+  constructor(product, db) {
     this.product = product;
 
     this.websocket = new Gdax.WebsocketClient([this.product]);
@@ -30,4 +30,4 @@ class exchange {
   }
 }
 
-module.exports = exchange;
+module.exports = Exchange;

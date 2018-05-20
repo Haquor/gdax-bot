@@ -1,6 +1,9 @@
 #!/usr/bin/env node
 'use strict';
 
+//Creation Notes:
+//Port all code to use promises
+
 const path = require('path');
 const modes = require(path.resolve( __dirname, "./modes.js" ));
 const babel = require('babel-register');

@@ -6,7 +6,9 @@ const chalk = require("chalk");
 const babel = require('babel-register');
 
 class UI {
-  constructor() { }
+  constructor()
+  {
+  }
 
   log(msg, type) {
     // Text color library
