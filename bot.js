@@ -1,12 +1,10 @@
 #!/usr/bin/env node
 'use strict';
 
-//Creation Notes:
-//Port all code to use promises
+// Holds all configs and run options
 
-const path = require('path');
-const modes = require(path.resolve( __dirname, "./modes.js" ));
-const babel = require('babel-register');
+var path = require('path');
+var modes = require(path.resolve( __dirname, "./libraries.js" ));
 
 const args = require('yargs')
     .usage('Usage: $0 option message \n e.g $0 -c config_file')
@@ -26,12 +24,12 @@ const args = require('yargs')
     .argv;
 
 // Function placeholder: login functionality
-var login = ['2ce769bdbfe68cbbeb27712f9249ccf9',
-            'gJFYCRWvfBZu1Twg84W2Ng2vws98lWVCRK3MEbCCVvSxqYI+WRSQmKCJSxy5+3sIWId38V0Db5zM0+vg3EqqAQ==',
-            'p3pafc65azf']
+var login = ['',
+            '',
+            '']
 
 // Functional placeholder: parse config file
 var config = ['ETH-USD', login];
 
-if (args.run) new modes("live", config);
-if (args.backtest) new modes("backtest", config);
+if (args.run) new _modules.modes("live", config);
+if (args.backtest) new _modules.modes("backtest", config);
