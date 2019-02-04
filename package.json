@@ -1,30 +1,31 @@
 {
   "name": "gdax-bot",
   "version": "1.0.0",
-  "description": "GDAX trading monitor",
+  "description": "NodeJS bot for GDAX",
   "main": "bot.js",
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "mathjs": "^5.4.2",
+    "mongodb": "^3.1.13"
+  },
+  "devDependencies": {},
   "scripts": {
-    "test": "node --harmony bot.js --config config.xml --run"
+    "test": "node bot.js --config config.xml --run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Haquor/gdax-bot.git"
   },
   "keywords": [
     "gdax",
-    "crypto",
-    "currency",
-    "trader"
+    "nodejs",
+    "bot",
+    "ta"
   ],
-  "author": "isonyx",
+  "author": "haquor",
   "license": "ISC",
-  "dependencies": {
-    "babel": "^6.23.0",
-    "babel-register": "^6.26.0",
-    "chalk": "^2.4.2",
-    "cli-table": "^0.3.1",
-    "commander": "^2.15.1",
-    "gdax": "^0.7.0",
-    "mathjs": "^5.4.2",
-    "mongodb": "^3.1.13",
-    "npm": "^6.0.1",
-    "path": "^0.12.7",
-    "yargs": "^11.0.0"
-  }
+  "bugs": {
+    "url": "https://github.com/Haquor/gdax-bot/issues"
+  },
+  "homepage": "https://github.com/Haquor/gdax-bot#readme"
 }
