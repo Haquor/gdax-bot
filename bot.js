@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 'use strict';
 
-// Holds all configs and run options
+global.myDB = null;
 
 var path = require('path');
-var modes = require(path.resolve( __dirname, "./libraries.js" ));
+require(path.resolve( __dirname, './route.js' ));
 
 const args = require('yargs')
     .usage('Usage: $0 option message \n e.g $0 -c config_file')
@@ -20,16 +20,23 @@ const args = require('yargs')
     .describe('b', 'Backtesting mode')
     .help('h')
     .alias('h', 'help')
-    .epilog('Copyright isonyx 2018')
+    .epilog('Copyright isonyx 2019')
     .argv;
 
-// Function placeholder: login functionality
+// Functional placeholder: parse config file
 var login = ['',
             '',
             '']
 
-// Functional placeholder: parse config file
-var config = ['ETH-USD', login];
+var config = ['BTC-USD', login];
 
-if (args.run) new _modules.modes("live", config);
-if (args.backtest) new _modules.modes("backtest", config);
+if (args.run) {
+    myDB = new _modules.database('live');
+    new _modules.exchange(config[0], config[1]);
+    _modules.terminal.log('Running bot in LIVE mode', 'e');
+}
+if (args.backtest) {
+    console.log('ABOUT TO BACKTEST');
+    //myDB = new _modules.database('backtest');
+    _modules.terminal.log('Backtesting is not enabled yet');
+}
