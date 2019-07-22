@@ -18,15 +18,29 @@ const args = require('yargs')
     .alias('b', 'backtest')
     .nargs('b', 0)
     .describe('b', 'Backtesting mode')
+    .alias('d', 'disc')
+    .nargs('d', 0)
+    .describe('d', 'Discord integration token')
     .help('h')
     .alias('h', 'help')
     .epilog('Copyright isonyx 2019')
     .argv;
 
-// Functional placeholder: parse config file
-var login = ['',
-            '',
-            '']
+if (args.disc) {
+    _modules.terminal.int_Discord(args.disc);
+}
+    
+
+var login = ['', '', '']
+
+var config_file = JSON.parse(_modules.fs.readFileSync(args.config));
+
+// If user is not a guest, pull login info
+if (!config_file.hasOwnProperty('guest')) {
+    _modules.terminal.log('Attempting authenticated user login');
+    login = [config_file['key'], config_file['secret'], config_file['passphrase']];
+}
+
 
 var config = ['BTC-USD', login];
 

@@ -7,19 +7,41 @@ require(path.resolve( __dirname, './../route.js'));
 class Exchange {
     constructor(product, creds) {
         this.onStart = null;
-        this.creds = this.login(creds);
+        this.authedClient = null;
         this.product = product;
-        try {
-            var attempt = this.connect(product);
-        } catch (error) {
-            _modules.terminal.log(attempt, 'e')
+
+        if (creds[0] != '') {
+            this.login(creds, function(err, tryLogin) {
+                _modules.terminal.log('Attempting to login with credentials: ' + creds);
+                if (err) {
+                    _modules.terinal.log(err.login);
+                } else {
+                    this.connect(product, function(err, tryConnect) {
+                        _modules.terminal.log('Attempting to connect to GDAX ' + product);
+                        if (err) {
+                            _modules.terinal.log(err.connect);
+                        } else {
+                            this.monitor(tryConnect);
+                        }
+                    });
+                }
+            });
+        } else {
+            this.monitor(this.connect(product));
         }
-        this.monitor(attempt);
+
     }
 
     login(credentials) {
-        // Function placeholder: login functionality
-        return credentials;
+
+        this.authedClient = new _modules.CoinbasePro.AuthenticatedClient(
+            credentials[0],
+            credentials[1],
+            credentials[2],
+            'https://api.pro.coinbase.com'
+          );
+
+        return this.authedClient;
     }
 
     connect(currency_pair) {
@@ -28,9 +50,16 @@ class Exchange {
 
     monitor(socket) {
         socket.on('message', data => {
+            if (global.dReady) {
+                global.discordClient.user.setActivity(`Watching ${this.product}`);
+                global.dReady = !global.dReady;
+            }
             this.parse(data);
         });
         socket.on('open', () => {
+            if (global.dReady) {
+                 _modules.terminal.log('Watching product');
+            }
            socket.subscribe({ product_ids: [this.product], channels: ['ticker'] });
             _modules.terminal.log('Requested the ticker channel for ' + this.product, 'z');
             myDB.setType("ticker");

@@ -1,0 +1,6 @@
+{
+    "guest":"enabled",
+    "key":"INSERT_YOUR_GDAX_KEY",
+    "secret":"INSERT_YOUR_GDAX_SECRET",
+    "passphrase":"INSERT_YOUR_GDAX_PASSPHRASE"
+}

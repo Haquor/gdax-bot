@@ -5,6 +5,9 @@ global.path = require('path');
 
 global._modules = {
     path:  require('path'),
+    Discord: require('discord.js'),
+    CoinbasePro: require('coinbase-pro'),
+    fs: require("fs"),
     maths: require('mathjs'),
     babel: require('babel-register'),
     mongo: require('mongodb'),
