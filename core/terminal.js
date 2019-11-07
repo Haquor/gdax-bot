@@ -19,7 +19,7 @@ class Terminal {
       global.discordClient.login(token)
       global.discordClient.on("ready", () => {
         global.dReady = true;
-        global.discordClient.channels.get('446896878366228492').send(
+        global.discordClient.channels.get('541852611309993995').send(
           '```python\n' +
           'LAIN is designed to be a GDAX based MongoDB powered crypto-currency trading bot\n' +
           'It is currently being used for research and market analysis, but in time, we hope to achieve the following\n' +
@@ -38,6 +38,7 @@ class Terminal {
           '       !log            Turn output on/off                 \n' +
           '       !help           Show help                          \n' +
           '       !clr            Deletes last 100 msgs              \n' +
+          '       !geoip  [ip_address]      Traces an IP address     \n' +
           '```');
       });
 
@@ -46,9 +47,11 @@ class Terminal {
         if(message.author.bot) return;
         
         if(message.content.indexOf("!") !== 0) return;
+
         
-        const args = message.content.slice(1).trim().split(/ +/g);
-        const command = args.shift().toLowerCase();
+        const human_message = message.content.slice(1).trim().split(/ +/g);
+        const args = human_message.slice(1);
+        const command = human_message.shift().toLowerCase();
         
 
         if(command === "log") {  
@@ -65,6 +68,23 @@ class Terminal {
                 message.channel.send('```python\nIf you’re not remembered, then you never existed.```');
             }
             clear();
+        }
+
+        if (command === "geoip") {
+          if (args.length === 1) {
+            async function geolocate() {
+              var geo = _modules.geoip.lookup(args[0]);
+              var output = '';
+
+              for (let [key, value] of Object.entries(geo)) {
+                output += `${key}: ${value}\n`
+              }
+              message.channel.send("```python\n" + output + "```");
+            }
+            geolocate();
+          } else {
+            message.channel.send("```python\nPlease supply a single argument [ip_address] : " + args.length + " arg(s) supplied```");
+          }
         }
 
       });

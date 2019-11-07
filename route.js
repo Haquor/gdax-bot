@@ -13,7 +13,8 @@ global._modules = {
     mongo: require('mongodb'),
     Gdax: require('gdax'),
     os: require('os'),
-    chalk: require('chalk')
+    chalk: require('chalk'),
+    geoip: require('geoip-lite')
 }
 
 //Don't repeat file names

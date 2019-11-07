@@ -1,0 +1,5 @@
+version: '3'
+services:
+  gdax-bot:
+    image: gdax-bot
+    build: .
